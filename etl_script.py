@@ -1,5 +1,6 @@
 from access import get_opensky_credentials
 from transform_data import transform_flight_data
+from load import load_data_into_mysql
 import requests
 
 def extract_opensky_data(bbox):
@@ -43,6 +44,5 @@ if __name__ == "__main__":
         # Transform the extracted data
         flight_data = transform_flight_data(raw_data)
 
-        # Print the transformed data
-        for flight in flight_data:
-            print(flight)  # Display the cleaned flight data
+        # Load the transformed data into MySQL
+        load_data_into_mysql(flight_data)
